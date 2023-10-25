@@ -26,6 +26,7 @@ export default {
         },
         boxShadow: {
             default: '0px 25px 40px -20px rgba(0, 0, 0, 0.10)',
+            none: 'none',
         },
         fontSize: {
             'body-l': [
@@ -39,6 +40,7 @@ export default {
         extend: {
             backgroundImage: {
                 mobile: "url('/public/assets/bg-sidebar-mobile.svg')",
+                desktop: "url('/public/assets/bg-sidebar-desktop.svg')",
             },
             borderWidth: {
                 1: 1,
