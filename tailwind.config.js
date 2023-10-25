@@ -2,6 +2,9 @@
 export default {
     content: ['./index.html', './src/**/*.{ts,tsx}'],
     theme: {
+        screens: {
+            desktop: '1440px',
+        },
         fontFamily: {
             ubuntu: 'Ubuntu',
         },
@@ -20,6 +23,18 @@ export default {
             grey100: '#F8F9FF',
             white: '#FFF',
             transparent: 'transparent',
+        },
+        boxShadow: {
+            default: '0px 25px 40px -20px rgba(0, 0, 0, 0.10)',
+        },
+        fontSize: {
+            'body-l': [
+                '16px',
+                {
+                    lineHeight: '25px',
+                    fontWeight: '400',
+                },
+            ],
         },
         extend: {
             backgroundImage: {
