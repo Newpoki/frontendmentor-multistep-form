@@ -21,7 +21,14 @@ export default {
             white: '#FFF',
             transparent: 'transparent',
         },
-        extend: {},
+        extend: {
+            backgroundImage: {
+                mobile: "url('/public/assets/bg-sidebar-mobile.svg')",
+            },
+            borderWidth: {
+                1: 1,
+            },
+        },
     },
     plugins: [],
 }
