@@ -1,22 +1,21 @@
-import { Forms } from '../types'
 import { SubscriptionFormsPersonalInfos } from './personal-info/subscription-forms-personal-infos'
 import { SubscriptionFormsPlan } from './plan/subscription-forms-plan'
+import { SubscriptionWizardContext } from './use-subcription-wizard'
 
 type Props = {
-    forms: Forms
-    onNextStep: (formValues: Partial<Forms>) => void
+    subscriptionWizard: SubscriptionWizardContext
 }
 
-export const SubscriptionForms = ({ forms, onNextStep }: Props) => {
-    switch (forms.currentFormName) {
+export const SubscriptionForms = ({ subscriptionWizard }: Props) => {
+    switch (subscriptionWizard.wizardState.currentStep) {
         case 'personalInfos':
-            return <SubscriptionFormsPersonalInfos onNextStep={onNextStep} />
+            return <SubscriptionFormsPersonalInfos subscriptionWizard={subscriptionWizard} />
 
         case 'plan':
-            return <SubscriptionFormsPlan />
+            return <SubscriptionFormsPlan subscriptionWizard={subscriptionWizard} />
 
         // TODO: Must be deleted when all form names are handled
         default:
-            throw new Error(`unknown form name: ${forms.currentFormName}`)
+            throw new Error(`unknown form name: ${subscriptionWizard.wizardState.currentStep}`)
     }
 }

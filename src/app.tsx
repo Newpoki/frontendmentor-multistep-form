@@ -1,27 +1,9 @@
-import { useCallback, useState } from 'react'
 import { StpeIndicator } from './components/step-indicator'
 import { SubscriptionForms } from './subscription-forms/subscription-forms'
-import { Forms } from './types'
-
-const getInitialForms = (): Forms => {
-    return {
-        currentFormName: 'personalInfos',
-        data: {
-            personalInfos: {
-                name: '',
-                email: '',
-                phone: '',
-            },
-        },
-    }
-}
+import { useSubscriptionWizard } from './subscription-forms/use-subcription-wizard'
 
 export const App = () => {
-    const [forms, setForms] = useState<Forms>(() => getInitialForms())
-
-    const handleGoNextStep = useCallback((updatedValues: Partial<Forms>) => {
-        setForms((currentForms) => ({ ...currentForms, ...updatedValues }))
-    }, [])
+    const subscriptionWizard = useSubscriptionWizard()
 
     return (
         <main className="flex flex-1 flex-col desktop:items-center desktop:justify-center">
@@ -35,7 +17,7 @@ export const App = () => {
                     <StpeIndicator stepNumber={4} isCurrentStep={false} title="summary" />
                 </header>
 
-                <SubscriptionForms forms={forms} onNextStep={handleGoNextStep} />
+                <SubscriptionForms subscriptionWizard={subscriptionWizard} />
             </div>
         </main>
     )
