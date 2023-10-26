@@ -9,6 +9,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { FormProvider } from '../../forms/form-provider'
+import { SubscriptionFormsPlanField } from './subscription-forms-plan-field'
 
 type Props = {
     subscriptionWizard: SubscriptionWizardContext
@@ -22,6 +23,8 @@ export const SubscriptionFormsPlan = ({ subscriptionWizard }: Props) => {
         shouldUseNativeValidation: false,
         resolver: zodResolver(subscriptionWizardPlanSchema),
     })
+
+    const currentPlanCode = formContext.watch('code')
 
     const handleSubmit = useCallback(
         (formValues: SubscriptionWizardContextDataPlanFormValues) => {
@@ -52,7 +55,32 @@ export const SubscriptionFormsPlan = ({ subscriptionWizard }: Props) => {
                 formContext={formContext}
                 onSubmit={handleSubmit}
             >
-                <p>pouet</p>
+                <ul className="flex flex-col gap-3">
+                    <li>
+                        <SubscriptionFormsPlanField
+                            isActive={currentPlanCode === 'arcade'}
+                            className="w-full"
+                            name="code"
+                            value="arcade"
+                        />
+                    </li>
+                    <li>
+                        <SubscriptionFormsPlanField
+                            isActive={currentPlanCode === 'advanced'}
+                            className="w-full"
+                            name="code"
+                            value="advanced"
+                        />
+                    </li>
+                    <li>
+                        <SubscriptionFormsPlanField
+                            isActive={currentPlanCode === 'pro'}
+                            className="w-full"
+                            name="code"
+                            value="pro"
+                        />
+                    </li>
+                </ul>
             </FormProvider>
         </SubscriptionFormsStepLayout>
     )
