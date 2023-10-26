@@ -18,7 +18,7 @@ export const SubscriptionFormsStepLayout = ({
         <div
             {...others}
             className={twMerge(
-                'flex flex-1 flex-col desktop:px-[100px] desktop:py-14 desktop:pb-8',
+                'animate-slideIn flex flex-1 flex-col desktop:px-[100px] desktop:py-14 desktop:pb-8',
                 className
             )}
         >
