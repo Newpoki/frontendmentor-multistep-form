@@ -14,11 +14,11 @@ export const StpeIndicator = ({
     ...others
 }: StepIndicatorProps) => {
     return (
-        <section className="desktop:flex desktop:items-center desktop:gap-4 uppercase">
+        <section className="uppercase desktop:flex desktop:items-center desktop:gap-4">
             <span
                 className={twMerge(
-                    'border-white text-grey100 border-1 flex h-8 w-8 items-center justify-center rounded-full border-solid text-[14px] font-bold leading-none',
-                    isCurrentStep && 'text-blue800 bg-blue100 border-blue100',
+                    'flex h-8 w-8 items-center justify-center rounded-full border-1 border-solid border-white text-[14px] font-bold leading-none text-grey100 transition-colors',
+                    isCurrentStep && 'border-blue100 bg-blue100 text-blue800',
                     className
                 )}
                 {...others}
@@ -26,11 +26,11 @@ export const StpeIndicator = ({
                 {stepNumber}
             </span>
 
-            <div className="desktop:flex desktop:flex-col hidden">
-                <h2 className="text-blue300 text-[12px] font-normal leading-none">
+            <div className="hidden desktop:flex desktop:flex-col">
+                <h2 className="text-[12px] font-normal leading-none text-blue300">
                     step {stepNumber}
                 </h2>
-                <h3 className="text-white text-[14px] font-bold leading-normal tracking-[1px]">
+                <h3 className="text-[14px] font-bold leading-normal tracking-[1px] text-white">
                     {title}
                 </h3>
             </div>
