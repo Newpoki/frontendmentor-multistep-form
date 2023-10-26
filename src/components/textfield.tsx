@@ -7,7 +7,7 @@ export type TextfieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
 }
 
 export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
-    ({ className, error, label, ...others }) => {
+    ({ className, error, label, ...others }, ref) => {
         return (
             <label className="flex flex-col gap-1 desktop:gap-2">
                 <div className="flex items-center justify-between text-[14px] leading-none">
@@ -22,6 +22,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
                         error != null && 'border-red500 hover:border-red500 focus:border-red500',
                         className
                     )}
+                    ref={ref}
                 />
             </label>
         )
