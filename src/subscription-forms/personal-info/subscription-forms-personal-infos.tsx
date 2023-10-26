@@ -43,7 +43,7 @@ export const SubscriptionFormsPersonalInfos = ({ subscriptionWizard }: Props) =>
                 description="Please provide your name, email address, and phone number"
                 actions={
                     <>
-                        <Button>next step</Button>
+                        <Button className="ml-auto">next step</Button>
                     </>
                 }
             >
