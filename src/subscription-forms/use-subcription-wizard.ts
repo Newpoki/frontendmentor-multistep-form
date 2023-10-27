@@ -12,6 +12,16 @@ export const subscriptionWizardPlanSchema = z.object({
     isYearlyBilling: z.boolean(),
 })
 
+export const subscriptionWizardAddonsSchema = z.object({
+    codes: z.array(
+        z.union([
+            z.literal('onlineService'),
+            z.literal('largerStorage'),
+            z.literal('customProfile'),
+        ])
+    ),
+})
+
 export type SubscriptionWizardContextDataPersonalInfosFormValues = z.infer<
     typeof subscriptionWizardPersonalInfosSchema
 >
@@ -20,9 +30,14 @@ export type SubscriptionWizardContextDataPlanFormValues = z.infer<
     typeof subscriptionWizardPlanSchema
 >
 
+export type SubscriptionWizardContextDataAddonsFormValues = z.infer<
+    typeof subscriptionWizardAddonsSchema
+>
+
 type SubscriptionWizardContextData = {
     personalInfos: SubscriptionWizardContextDataPersonalInfosFormValues
     plan: SubscriptionWizardContextDataPlanFormValues
+    addons: SubscriptionWizardContextDataAddonsFormValues
 }
 
 type SubscriptionWizardStepsNames = keyof SubscriptionWizardContextData
@@ -38,6 +53,7 @@ export type SubscriptionWizardContext = {
         updatedPersonalInfosData: SubscriptionWizardContextDataPersonalInfosFormValues
     ) => void
     onUpdatePlan: (updatedPlanData: SubscriptionWizardContextDataPlanFormValues) => void
+    onUpdateAddons: (updatedAddonsData: SubscriptionWizardContextDataAddonsFormValues) => void
     goToStep: (newStep: SubscriptionWizardStepsNames) => void
 }
 
@@ -50,6 +66,9 @@ const defaultWizardStateData: SubscriptionWizardContextData = {
     plan: {
         code: 'arcade',
         isYearlyBilling: false,
+    },
+    addons: {
+        codes: [],
     },
 }
 
@@ -87,6 +106,19 @@ export const useSubscriptionWizard = (): SubscriptionWizardContext => {
         []
     )
 
+    const handleUpdateAddons = useCallback(
+        (updatedPlanData: SubscriptionWizardContextDataAddonsFormValues) => {
+            setWizardState((currentState) => ({
+                ...currentState,
+                data: {
+                    ...currentState.data,
+                    addons: updatedPlanData,
+                },
+            }))
+        },
+        []
+    )
+
     const handleGoToStep = useCallback((newCurrentStep: SubscriptionWizardStepsNames) => {
         setWizardState((currentState) => ({
             ...currentState,
@@ -99,8 +131,15 @@ export const useSubscriptionWizard = (): SubscriptionWizardContext => {
             wizardState,
             onUpdatePersonalInfos: handleUpdatePersonalInfos,
             onUpdatePlan: handleUpdatePlan,
+            onUpdateAddons: handleUpdateAddons,
             goToStep: handleGoToStep,
         }),
-        [handleGoToStep, handleUpdatePersonalInfos, handleUpdatePlan, wizardState]
+        [
+            handleGoToStep,
+            handleUpdateAddons,
+            handleUpdatePersonalInfos,
+            handleUpdatePlan,
+            wizardState,
+        ]
     )
 }

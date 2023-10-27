@@ -32,8 +32,9 @@ export const SubscriptionFormsPlan = ({ subscriptionWizard }: Props) => {
     const handleSubmit = useCallback(
         (formValues: SubscriptionWizardContextDataPlanFormValues) => {
             onUpdatePlan(formValues)
+            goToStep('addons')
         },
-        [onUpdatePlan]
+        [goToStep, onUpdatePlan]
     )
 
     const handleGoBack = useCallback(() => {
@@ -41,22 +42,22 @@ export const SubscriptionFormsPlan = ({ subscriptionWizard }: Props) => {
     }, [goToStep])
 
     return (
-        <SubscriptionFormsStepLayout
-            title="Select your plan"
-            description="You have the option of monthly or yearly billing."
-            actions={
-                <>
-                    <Button onClick={handleGoBack} variant="text">
-                        go back
-                    </Button>
-                    <Button>next step</Button>
-                </>
-            }
+        <FormProvider
+            className="flex flex-1 flex-col"
+            formContext={formContext}
+            onSubmit={handleSubmit}
         >
-            <FormProvider
-                className="flex flex-1 flex-col"
-                formContext={formContext}
-                onSubmit={handleSubmit}
+            <SubscriptionFormsStepLayout
+                title="Select your plan"
+                description="You have the option of monthly or yearly billing."
+                actions={
+                    <>
+                        <Button onClick={handleGoBack} variant="text">
+                            go back
+                        </Button>
+                        <Button>next step</Button>
+                    </>
+                }
             >
                 <ul className="mb-6 flex flex-col gap-3">
                     <li>
@@ -106,7 +107,7 @@ export const SubscriptionFormsPlan = ({ subscriptionWizard }: Props) => {
                         Yearly
                     </span>
                 </label>
-            </FormProvider>
-        </SubscriptionFormsStepLayout>
+            </SubscriptionFormsStepLayout>
+        </FormProvider>
     )
 }
