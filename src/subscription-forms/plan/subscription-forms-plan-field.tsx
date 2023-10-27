@@ -1,18 +1,27 @@
-import { Controller, useFormContext } from 'react-hook-form'
+import { Controller, useFormContext, useWatch } from 'react-hook-form'
 import { ToggleWrapper, ToggleWrapperProps } from '../../components/toggle-wrapper'
 import { SUBSCRIPTION_PLANS_OPTIONS } from './subscription-forms-plan-constants'
 import { SubscriptionWizardContextDataPlanFormValues } from '../use-subcription-wizard'
 import { twMerge } from 'tailwind-merge'
+import { useMemo } from 'react'
 
 type Props = Omit<ToggleWrapperProps, 'onChange' | 'onBlur' | 'name' | 'value' | 'type'> & {
-    name: string
+    name: keyof SubscriptionWizardContextDataPlanFormValues
     value: SubscriptionWizardContextDataPlanFormValues['code']
 }
 
 export const SubscriptionFormsPlanField = ({ className, name, value, ...others }: Props) => {
-    const { control } = useFormContext()
+    const { control } = useFormContext<SubscriptionWizardContextDataPlanFormValues>()
+
+    const isYearlyBilling = useWatch({ control, name: 'isYearlyBilling' })
 
     const planData = SUBSCRIPTION_PLANS_OPTIONS[value]
+
+    const displayedPrice = useMemo(() => {
+        return isYearlyBilling
+            ? `$${planData.priceInDollar.yearly}/yr`
+            : `$${planData.priceInDollar.monthly}/mo`
+    }, [isYearlyBilling, planData.priceInDollar.monthly, planData.priceInDollar.yearly])
 
     return (
         <Controller
@@ -40,11 +49,13 @@ export const SubscriptionFormsPlanField = ({ className, name, value, ...others }
                                 {planData.label}
                             </span>
                             <span className="text-[14px] font-normal leading-none text-grey500">
-                                ${planData.priceInDollar.monthly}/mo
+                                {displayedPrice}
                             </span>
-                            <span className="text-[12px] font-normal leading-none text-blue800">
-                                2 months free
-                            </span>
+                            {isYearlyBilling && (
+                                <span className="text-[12px] font-normal leading-none text-blue800">
+                                    2 months free
+                                </span>
+                            )}
                         </div>
                     </ToggleWrapper>
                 )
