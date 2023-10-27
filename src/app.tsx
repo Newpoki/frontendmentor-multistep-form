@@ -23,7 +23,11 @@ export const App = () => {
                         isCurrentStep={currentStep === 'plan'}
                         title="select plan"
                     />
-                    <StpeIndicator stepNumber={3} isCurrentStep={false} title="add-ons" />
+                    <StpeIndicator
+                        stepNumber={3}
+                        isCurrentStep={currentStep === 'addons'}
+                        title="add-ons"
+                    />
                     <StpeIndicator stepNumber={4} isCurrentStep={false} title="summary" />
                 </header>
 
