@@ -9,7 +9,7 @@ export const subscriptionWizardPersonalInfosSchema = z.object({
 
 export const subscriptionWizardPlanSchema = z.object({
     code: z.union([z.literal('arcade'), z.literal('advanced'), z.literal('pro')]),
-    billingFrequency: z.union([z.literal('monthly'), z.literal('yearly')]),
+    isYearlyBilling: z.boolean(),
 })
 
 export type SubscriptionWizardContextDataPersonalInfosFormValues = z.infer<
@@ -49,7 +49,7 @@ const defaultWizardStateData: SubscriptionWizardContextData = {
     },
     plan: {
         code: 'arcade',
-        billingFrequency: 'monthly',
+        isYearlyBilling: false,
     },
 }
 
