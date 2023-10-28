@@ -1,4 +1,5 @@
 import { SubscriptionFormsAddons } from './addons/subscription-forms-addons'
+import { SubscriptionFormsGreetings } from './greetings/subscription-forms-greetings'
 import { SubscriptionFormsPersonalInfos } from './personal-info/subscription-forms-personal-infos'
 import { SubscriptionFormsPlan } from './plan/subscription-forms-plan'
 import { SubscriptionFormsSummary } from './summary/subscription-forms-step-summary'
@@ -27,6 +28,7 @@ export const SubscriptionForms = ({ subscriptionWizard }: Props) => {
             {currentStep === 'summary' && (
                 <SubscriptionFormsSummary subscriptionWizard={subscriptionWizard} />
             )}
+            {currentStep === 'greetings' && <SubscriptionFormsGreetings />}
         </div>
     )
 }
