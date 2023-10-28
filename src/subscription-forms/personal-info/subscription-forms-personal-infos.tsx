@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { Button } from '../../components/button'
 import { FormProvider } from '../../forms/form-provider'
 import { SubscriptionFormsStepLayout } from '../subscription-forms-step-layout'
@@ -31,6 +31,10 @@ export const SubscriptionFormsPersonalInfos = ({ subscriptionWizard }: Props) =>
         },
         [goToStep, onUpdatePersonalInfos]
     )
+
+    useEffect(() => {
+        document.title = 'Subscription - Infos'
+    }, [])
 
     return (
         <FormProvider

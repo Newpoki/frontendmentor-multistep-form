@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import { Button } from '../../components/button'
 import { SubscriptionFormsStepLayout } from '../subscription-forms-step-layout'
 import { SubscriptionWizardContext } from '../use-subcription-wizard'
@@ -56,6 +56,10 @@ export const SubscriptionFormsSummary = ({ subscriptionWizard }: Props) => {
     const handleGoToPlan = useCallback(() => {
         goToStep('plan')
     }, [goToStep])
+
+    useEffect(() => {
+        document.title = 'Subscription - Summary'
+    }, [])
 
     return (
         <SubscriptionFormsStepLayout

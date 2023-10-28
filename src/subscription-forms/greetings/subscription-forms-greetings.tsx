@@ -1,7 +1,12 @@
 import { SubscriptionFormsStepLayout } from '../subscription-forms-step-layout'
 import IconCheck from '../../assets/icon-check.svg'
+import { useEffect } from 'react'
 
 export const SubscriptionFormsGreetings = () => {
+    useEffect(() => {
+        document.title = 'Subscription - Thank you !'
+    }, [])
+
     return (
         <SubscriptionFormsStepLayout className="flex flex-col items-center py-20 desktop:flex-1 desktop:justify-center">
             {/* @ts-expect-error - TS2322 - Property 'className' does not exist on type 'IntrinsicAttributes' */}

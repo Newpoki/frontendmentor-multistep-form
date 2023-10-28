@@ -77,7 +77,7 @@ const defaultWizardStateData: SubscriptionWizardContextData = {
 }
 
 const defaultWizardState: SubscriptionWizardState = {
-    currentStep: 'plan',
+    currentStep: 'personalInfos',
     data: defaultWizardStateData,
 }
 

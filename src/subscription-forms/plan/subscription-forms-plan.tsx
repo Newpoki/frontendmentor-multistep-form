@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { Button } from '../../components/button'
 import { SubscriptionFormsStepLayout } from '../subscription-forms-step-layout'
 import {
@@ -40,6 +40,10 @@ export const SubscriptionFormsPlan = ({ subscriptionWizard }: Props) => {
     const handleGoBack = useCallback(() => {
         goToStep('personalInfos')
     }, [goToStep])
+
+    useEffect(() => {
+        document.title = 'Subscription - Plan'
+    }, [])
 
     return (
         <FormProvider
