@@ -1,16 +1,16 @@
 import { Controller, useFormContext, useWatch } from 'react-hook-form'
 import { ToggleWrapper, ToggleWrapperProps } from '../../components/toggle-wrapper'
-import { SUBSCRIPTION_PLANS_OPTIONS } from './subscription-forms-plan-constants'
 import { SubscriptionWizardContextDataPlanFormValues } from '../use-subcription-wizard'
 import { twMerge } from 'tailwind-merge'
 import { useMemo } from 'react'
+import { SUBSCRIPTION_PLANS_OPTIONS } from './plan-step-constants'
 
 type Props = Omit<ToggleWrapperProps, 'onChange' | 'onBlur' | 'name' | 'value' | 'type'> & {
     name: keyof SubscriptionWizardContextDataPlanFormValues
     value: SubscriptionWizardContextDataPlanFormValues['code']
 }
 
-export const SubscriptionFormsPlanField = ({ className, name, value, ...others }: Props) => {
+export const PlanStepPlanField = ({ className, name, value, ...others }: Props) => {
     const { control } = useFormContext<SubscriptionWizardContextDataPlanFormValues>()
 
     const isYearlyBilling = useWatch({ control, name: 'isYearlyBilling' })

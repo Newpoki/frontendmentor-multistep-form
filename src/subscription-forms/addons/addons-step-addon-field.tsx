@@ -3,8 +3,8 @@ import { ToggleWrapper, ToggleWrapperProps } from '../../components/toggle-wrapp
 import { SubscriptionWizardContextDataAddonsFormValues } from '../use-subcription-wizard'
 import { twMerge } from 'tailwind-merge'
 import { useMemo } from 'react'
-import { SUBSCRIPTION_ADDONS_OPTIONS } from './subscription-forms-addons-constants'
 import { Checkbox } from '../../components/checkbox'
+import { SUBSCRIPTION_ADDONS_OPTIONS } from './addons-step-constants'
 
 type Props = Omit<ToggleWrapperProps, 'onChange' | 'onBlur' | 'name' | 'value' | 'type'> & {
     name: keyof SubscriptionWizardContextDataAddonsFormValues
@@ -12,7 +12,7 @@ type Props = Omit<ToggleWrapperProps, 'onChange' | 'onBlur' | 'name' | 'value' |
     isYearlyBilling: boolean
 }
 
-export const SubscriptionFormsAddonField = ({
+export const AddonsFormAddonField = ({
     className,
     isYearlyBilling,
     name,

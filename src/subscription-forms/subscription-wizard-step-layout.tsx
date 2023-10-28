@@ -6,7 +6,7 @@ type Props = React.HTMLAttributes<HTMLDivElement> & {
     actions?: React.ReactNode
 }
 
-export const SubscriptionFormsStepLayout = ({
+export const SubscriptionWizardStepLayout = ({
     actions,
     className,
     children,

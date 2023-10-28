@@ -1,18 +1,18 @@
 import { useCallback, useMemo, useState } from 'react'
 import z from 'zod'
 
-export const subscriptionWizardPersonalInfosSchema = z.object({
+export const subscriptionWizardPersonalInfosStepSchema = z.object({
     email: z.string().min(1, 'This field is required').email('This is not a valid email'),
     name: z.string().min(1, 'This field is required'),
     phone: z.string().min(1, 'This field is required'),
 })
 
-export const subscriptionWizardPlanSchema = z.object({
+export const subscriptionWizardPlanStepSchema = z.object({
     code: z.union([z.literal('arcade'), z.literal('advanced'), z.literal('pro')]),
     isYearlyBilling: z.boolean(),
 })
 
-export const subscriptionWizardAddonsSchema = z.object({
+export const subscriptionWizardAddonsStepSchema = z.object({
     codes: z.array(
         z.union([
             z.literal('onlineService'),
@@ -23,15 +23,15 @@ export const subscriptionWizardAddonsSchema = z.object({
 })
 
 export type SubscriptionWizardContextDataPersonalInfosFormValues = z.infer<
-    typeof subscriptionWizardPersonalInfosSchema
+    typeof subscriptionWizardPersonalInfosStepSchema
 >
 
 export type SubscriptionWizardContextDataPlanFormValues = z.infer<
-    typeof subscriptionWizardPlanSchema
+    typeof subscriptionWizardPlanStepSchema
 >
 
 export type SubscriptionWizardContextDataAddonsFormValues = z.infer<
-    typeof subscriptionWizardAddonsSchema
+    typeof subscriptionWizardAddonsStepSchema
 >
 
 type SubscriptionWizardContextData = {

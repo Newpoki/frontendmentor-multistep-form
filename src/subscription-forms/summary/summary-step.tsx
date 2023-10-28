@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useMemo } from 'react'
 import { Button } from '../../components/button'
-import { SubscriptionFormsStepLayout } from '../subscription-forms-step-layout'
 import { SubscriptionWizardContext } from '../use-subcription-wizard'
-import { SUBSCRIPTION_PLANS_OPTIONS } from '../plan/subscription-forms-plan-constants'
-import { SUBSCRIPTION_ADDONS_OPTIONS } from '../addons/subscription-forms-addons-constants'
+import { SUBSCRIPTION_PLANS_OPTIONS } from '../plan/plan-step-constants'
+import { SUBSCRIPTION_ADDONS_OPTIONS } from '../addons/addons-step-constants'
+import { SubscriptionWizardStepLayout } from '../subscription-wizard-step-layout'
 
 type Props = {
     subscriptionWizard: SubscriptionWizardContext
 }
 
-export const SubscriptionFormsSummary = ({ subscriptionWizard }: Props) => {
+export const SummaryStep = ({ subscriptionWizard }: Props) => {
     const { goToStep } = subscriptionWizard
     const { plan, addons } = subscriptionWizard.wizardState.data
 
@@ -62,7 +62,7 @@ export const SubscriptionFormsSummary = ({ subscriptionWizard }: Props) => {
     }, [])
 
     return (
-        <SubscriptionFormsStepLayout
+        <SubscriptionWizardStepLayout
             title="Finishing up"
             description="Double-check everything looks OK before confirming."
             actions={
@@ -125,6 +125,6 @@ export const SubscriptionFormsSummary = ({ subscriptionWizard }: Props) => {
                     {displayedTotalAmount}
                 </span>
             </p>
-        </SubscriptionFormsStepLayout>
+        </SubscriptionWizardStepLayout>
     )
 }

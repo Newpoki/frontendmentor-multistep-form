@@ -1,27 +1,27 @@
 import { useCallback, useEffect } from 'react'
 import { Button } from '../../components/button'
 import { FormProvider } from '../../forms/form-provider'
-import { SubscriptionFormsStepLayout } from '../subscription-forms-step-layout'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ControlledTextfield } from '../../forms/controlled-textfield'
 import {
     SubscriptionWizardContext,
     SubscriptionWizardContextDataPersonalInfosFormValues,
-    subscriptionWizardPersonalInfosSchema,
+    subscriptionWizardPersonalInfosStepSchema,
 } from '../use-subcription-wizard'
+import { SubscriptionWizardStepLayout } from '../subscription-wizard-step-layout'
 
 type Props = {
     subscriptionWizard: SubscriptionWizardContext
 }
 
-export const SubscriptionFormsPersonalInfos = ({ subscriptionWizard }: Props) => {
+export const PersonalInfosStep = ({ subscriptionWizard }: Props) => {
     const { goToStep, onUpdatePersonalInfos } = subscriptionWizard
 
     const formContext = useForm<SubscriptionWizardContextDataPersonalInfosFormValues>({
         defaultValues: subscriptionWizard.wizardState.data.personalInfos,
         shouldUseNativeValidation: false,
-        resolver: zodResolver(subscriptionWizardPersonalInfosSchema),
+        resolver: zodResolver(subscriptionWizardPersonalInfosStepSchema),
     })
 
     const handleSubmit = useCallback(
@@ -42,7 +42,7 @@ export const SubscriptionFormsPersonalInfos = ({ subscriptionWizard }: Props) =>
             formContext={formContext}
             onSubmit={handleSubmit}
         >
-            <SubscriptionFormsStepLayout
+            <SubscriptionWizardStepLayout
                 title="Personal info"
                 description="Please provide your name, email address, and phone number"
                 actions={
@@ -64,7 +64,7 @@ export const SubscriptionFormsPersonalInfos = ({ subscriptionWizard }: Props) =>
                         placeholder="e.g. +33 6 12 34 56 78"
                     />
                 </div>
-            </SubscriptionFormsStepLayout>
+            </SubscriptionWizardStepLayout>
         </FormProvider>
     )
 }

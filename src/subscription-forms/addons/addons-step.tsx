@@ -1,27 +1,27 @@
 import { useCallback, useEffect } from 'react'
 import { Button } from '../../components/button'
-import { SubscriptionFormsStepLayout } from '../subscription-forms-step-layout'
 import {
     SubscriptionWizardContext,
     SubscriptionWizardContextDataAddonsFormValues,
-    subscriptionWizardAddonsSchema,
+    subscriptionWizardAddonsStepSchema,
 } from '../use-subcription-wizard'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { FormProvider } from '../../forms/form-provider'
-import { SubscriptionFormsAddonField } from './subscription-forms-addon-field'
+import { SubscriptionWizardStepLayout } from '../subscription-wizard-step-layout'
+import { AddonsFormAddonField } from './addons-step-addon-field'
 
 type Props = {
     subscriptionWizard: SubscriptionWizardContext
 }
 
-export const SubscriptionFormsAddons = ({ subscriptionWizard }: Props) => {
+export const AddonsStep = ({ subscriptionWizard }: Props) => {
     const { goToStep, onUpdateAddons } = subscriptionWizard
 
     const formContext = useForm<SubscriptionWizardContextDataAddonsFormValues>({
         defaultValues: subscriptionWizard.wizardState.data.addons,
         shouldUseNativeValidation: false,
-        resolver: zodResolver(subscriptionWizardAddonsSchema),
+        resolver: zodResolver(subscriptionWizardAddonsStepSchema),
     })
 
     const { isYearlyBilling } = subscriptionWizard.wizardState.data.plan
@@ -48,7 +48,7 @@ export const SubscriptionFormsAddons = ({ subscriptionWizard }: Props) => {
             formContext={formContext}
             onSubmit={handleSubmit}
         >
-            <SubscriptionFormsStepLayout
+            <SubscriptionWizardStepLayout
                 title="Pick add-ons"
                 description="Add-ons help enhance your gaming experience."
                 actions={
@@ -62,28 +62,28 @@ export const SubscriptionFormsAddons = ({ subscriptionWizard }: Props) => {
             >
                 <ul className="flex flex-col gap-3">
                     <li>
-                        <SubscriptionFormsAddonField
+                        <AddonsFormAddonField
                             name="codes"
                             isYearlyBilling={isYearlyBilling}
                             value="onlineService"
                         />
                     </li>
                     <li>
-                        <SubscriptionFormsAddonField
+                        <AddonsFormAddonField
                             name="codes"
                             isYearlyBilling={isYearlyBilling}
                             value="largerStorage"
                         />
                     </li>
                     <li>
-                        <SubscriptionFormsAddonField
+                        <AddonsFormAddonField
                             name="codes"
                             isYearlyBilling={isYearlyBilling}
                             value="customProfile"
                         />
                     </li>
                 </ul>
-            </SubscriptionFormsStepLayout>
+            </SubscriptionWizardStepLayout>
         </FormProvider>
     )
 }

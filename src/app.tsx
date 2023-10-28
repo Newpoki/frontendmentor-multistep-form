@@ -1,5 +1,5 @@
 import { StpeIndicator } from './components/step-indicator'
-import { SubscriptionForms } from './subscription-forms/subscription-forms'
+import { SubscriptionWizardSteps } from './subscription-forms/subscription-wizard-steps'
 import { useSubscriptionWizard } from './subscription-forms/use-subcription-wizard'
 
 export const App = () => {
@@ -35,7 +35,7 @@ export const App = () => {
                     />
                 </header>
 
-                <SubscriptionForms subscriptionWizard={subscriptionWizard} />
+                <SubscriptionWizardSteps subscriptionWizard={subscriptionWizard} />
             </div>
         </main>
     )
