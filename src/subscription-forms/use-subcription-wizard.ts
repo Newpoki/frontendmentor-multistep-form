@@ -38,6 +38,8 @@ type SubscriptionWizardContextData = {
     personalInfos: SubscriptionWizardContextDataPersonalInfosFormValues
     plan: SubscriptionWizardContextDataPlanFormValues
     addons: SubscriptionWizardContextDataAddonsFormValues
+    summary: null
+    greetings: null
 }
 
 type SubscriptionWizardStepsNames = keyof SubscriptionWizardContextData
@@ -70,10 +72,12 @@ const defaultWizardStateData: SubscriptionWizardContextData = {
     addons: {
         codes: [],
     },
+    summary: null,
+    greetings: null,
 }
 
 const defaultWizardState: SubscriptionWizardState = {
-    currentStep: 'addons',
+    currentStep: 'summary',
     data: defaultWizardStateData,
 }
 

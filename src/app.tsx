@@ -28,7 +28,11 @@ export const App = () => {
                         isCurrentStep={currentStep === 'addons'}
                         title="add-ons"
                     />
-                    <StpeIndicator stepNumber={4} isCurrentStep={false} title="summary" />
+                    <StpeIndicator
+                        stepNumber={4}
+                        isCurrentStep={currentStep === 'summary' || currentStep === 'greetings'}
+                        title="summary"
+                    />
                 </header>
 
                 <SubscriptionForms subscriptionWizard={subscriptionWizard} />
