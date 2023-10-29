@@ -76,26 +76,30 @@ export const SummaryStep = ({ subscriptionWizard }: Props) => {
                 </>
             }
         >
-            <div className="mb-6 flex flex-col gap-3 rounded-lg bg-grey100 p-4">
-                <div className="flex items-center justify-between text-[14px] leading-none text-blue800">
-                    <div className="flex flex-col items-start gap-1">
-                        <span className="font-medium">{displayedPlanLabel}</span>
+            <div className="mb-6 flex flex-col rounded-lg bg-grey100 p-4">
+                <div className="flex items-center justify-between  leading-none text-blue800">
+                    <div className="flex flex-col items-start gap-1 desktop:gap-2">
+                        <span className="text-[14px] font-medium desktop:text-[16px]">
+                            {displayedPlanLabel}
+                        </span>
                         <button
-                            className="font-normal text-grey500 underline decoration-grey500"
+                            className="text-[14px] font-normal text-grey500 underline decoration-grey500 transition-colors hover:text-purple500 hover:decoration-purple500"
                             type="button"
                             onClick={handleGoToPlan}
                         >
                             Change
                         </button>
                     </div>
-                    <span className="font-bold">{displayedPlanPrice}</span>
+                    <span className="text-[14px] font-bold desktop:text-[16px]">
+                        {displayedPlanPrice}
+                    </span>
                 </div>
 
                 {addons.codes.length > 0 && (
                     <>
-                        <div className="h-[1px] w-full bg-grey500/20" />
+                        <div className="my-3 h-[1px] w-full bg-grey500/20 desktop:mb-4 desktop:mt-6" />
 
-                        <ul className="flex flex-col gap-3">
+                        <ul className="flex flex-col gap-3 desktop:gap-4">
                             {addons.codes.map((code) => {
                                 const addonOption = SUBSCRIPTION_ADDONS_OPTIONS[code]
                                 const { monthly, yearly } = addonOption.priceInDollar
@@ -121,7 +125,7 @@ export const SummaryStep = ({ subscriptionWizard }: Props) => {
                 <span className="text-[14px] font-normal leading-none text-grey500">
                     Total {isYearlyBilling ? '(per year)' : '(per month)'}
                 </span>
-                <span className="text-{16px] font-bold leading-none text-purple500">
+                <span className="text-{16px] font-bold leading-none text-purple500 desktop:text-[20px]">
                     {displayedTotalAmount}
                 </span>
             </p>

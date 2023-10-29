@@ -33,7 +33,10 @@ export const PlanStepPlanField = ({ className, name, value, ...others }: Props) 
                         {...others}
                         {...field}
                         name={name}
-                        className={twMerge('flex gap-4 px-4 py-5', className)}
+                        className={twMerge(
+                            'flex gap-4 px-4 py-5 desktop:flex-col desktop:gap-10',
+                            className
+                        )}
                         id={value}
                         type="radio"
                         /** Have to use the value provided as this field is a radio

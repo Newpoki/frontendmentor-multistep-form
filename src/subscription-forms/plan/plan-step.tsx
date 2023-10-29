@@ -63,7 +63,7 @@ export const PlanStep = ({ subscriptionWizard }: Props) => {
                     </>
                 }
             >
-                <ul className="mb-6 flex flex-col gap-3">
+                <ul className="mb-6 flex flex-col gap-3 desktop:mb-8 desktop:grid desktop:grid-cols-3 desktop:gap-5">
                     <li>
                         <PlanStepPlanField
                             isActive={currentPlanCode === 'arcade'}
@@ -90,7 +90,7 @@ export const PlanStep = ({ subscriptionWizard }: Props) => {
                     </li>
                 </ul>
 
-                <label className="flex cursor-pointer items-center justify-center gap-6 rounded-lg bg-grey100 py-4 text-[14px] font-medium leading-none text-grey500">
+                <label className="flex cursor-pointer items-center justify-center gap-6 rounded-lg bg-grey100 py-4 text-[14px] font-medium leading-none text-grey500 desktop:font-bold">
                     <span
                         className={twMerge(
                             'transition-colors',

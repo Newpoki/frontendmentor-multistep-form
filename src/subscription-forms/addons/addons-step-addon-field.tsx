@@ -38,7 +38,10 @@ export const AddonsFormAddonField = ({
             {...others}
             {...register('codes')}
             name={name}
-            className={twMerge('flex items-center gap-4 px-4 py-3', className)}
+            className={twMerge(
+                'flex items-center gap-4 px-4 py-3 desktop:px-6 desktop:py-5',
+                className
+            )}
             id={value}
             type="checkbox"
             isActive={isAddonChecked}
@@ -50,21 +53,18 @@ export const AddonsFormAddonField = ({
         >
             <Checkbox checked={isAddonChecked} />
             <div className="flex w-full items-center justify-between">
-                <div className="flex flex-col gap-1">
-                    <span className="text-[14px] font-medium leading-none text-blue800">
+                <div className="flex flex-col gap-1 desktop:gap-2">
+                    <span className="text-[14px] font-medium leading-none text-blue800 desktop:text-[16px]">
                         {planData.label}
                     </span>
-                    <span className="text-[12px] font-normal leading-none text-grey500">
+                    <span className="text-[12px] font-normal leading-none text-grey500 desktop:text-[16px]">
                         {planData.description}
                     </span>
                 </div>
-                <span className="text-[12px] font-normal leading-none text-purple500">
+                <span className="text-[12px] font-normal leading-none text-purple500 desktop:text-[14px]">
                     {displayedPrice}
                 </span>
             </div>
         </ToggleWrapper>
-        //         )
-        //     }}
-        // />
     )
 }

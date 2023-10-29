@@ -60,7 +60,7 @@ export const AddonsStep = ({ subscriptionWizard }: Props) => {
                     </>
                 }
             >
-                <ul className="flex flex-col gap-3">
+                <ul className="flex flex-col gap-3 desktop:gap-4">
                     <li>
                         <AddonsFormAddonField
                             name="codes"
