@@ -57,6 +57,7 @@ export const PersonalInfosStep = ({ subscriptionWizard }: Props) => {
                         name="email"
                         label="email"
                         placeholder="e.g. stephenking@lorem.com"
+                        type="email"
                     />
                     <ControlledTextfield
                         name="phone"
