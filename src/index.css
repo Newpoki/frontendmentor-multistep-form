@@ -8,6 +8,7 @@
         @apply min-h-[100dvh];
         @apply flex;
         @apply flex-col;
+        @apply font-ubuntu;
     }
 
     #root {
