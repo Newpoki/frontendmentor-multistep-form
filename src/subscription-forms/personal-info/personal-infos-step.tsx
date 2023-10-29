@@ -62,6 +62,7 @@ export const PersonalInfosStep = ({ subscriptionWizard }: Props) => {
                         name="phone"
                         label="phone number"
                         placeholder="e.g. +33 6 12 34 56 78"
+                        type="tel"
                     />
                 </div>
             </SubscriptionWizardStepLayout>

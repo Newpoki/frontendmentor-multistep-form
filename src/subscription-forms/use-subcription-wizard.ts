@@ -4,7 +4,13 @@ import z from 'zod'
 export const subscriptionWizardPersonalInfosStepSchema = z.object({
     email: z.string().min(1, 'This field is required').email('This is not a valid email'),
     name: z.string().min(1, 'This field is required'),
-    phone: z.string().min(1, 'This field is required'),
+    phone: z
+        .string()
+        .min(1, 'This field is required')
+        .regex(
+            /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/,
+            'This is not a valid french number'
+        ),
 })
 
 export const subscriptionWizardPlanStepSchema = z.object({
