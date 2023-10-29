@@ -10,10 +10,10 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
     ({ className, error, label, ...others }, ref) => {
         return (
             <label className="flex flex-col gap-1 desktop:gap-2">
-                <div className="flex items-center justify-between text-[14px] leading-none">
+                <span className="flex items-center justify-between text-[14px] leading-none">
                     <span className="font-normal capitalize text-blue800">{label}</span>
                     {error != null && <span className="font-bold text-red500 ">{error}</span>}
-                </div>
+                </span>
 
                 <input
                     {...others}
