@@ -1,6 +1,6 @@
 import { StpeIndicator } from './components/step-indicator'
-import { SubscriptionWizardSteps } from './subscription-forms/subscription-wizard-steps'
-import { useSubscriptionWizard } from './subscription-forms/use-subcription-wizard'
+import { SubscriptionWizardSteps } from './subscription-wizard/subscription-wizard-steps'
+import { useSubscriptionWizard } from './subscription-wizard/use-subcription-wizard'
 
 export const App = () => {
     const subscriptionWizard = useSubscriptionWizard()
