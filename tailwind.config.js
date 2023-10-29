@@ -59,7 +59,7 @@ export default {
                 },
             },
             animation: {
-                slideIn: 'slide-in 0.5s ease-out forwards',
+                slideIn: 'slide-in 0.75s ease-out forwards',
             },
         },
     },
